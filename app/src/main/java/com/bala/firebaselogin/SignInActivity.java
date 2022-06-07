@@ -39,29 +39,17 @@ public class SignInActivity extends AppCompatActivity {
         signInButton = findViewById(R.id.signInButton);
         forgotPasswordButton = findViewById(R.id.forgotPasswordButton);
         sendVerifyMailAgainButton = findViewById(R.id.verifyEmailAgainButton);
-        errorView = findViewById(R.id.signInErrorView);
-
+        errorView = findViewById(R.id.changePasswordErrorView);
         sendVerifyMailAgainButton.setVisibility(View.INVISIBLE);
-
         mAuth = FirebaseAuth.getInstance();
-
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if (emailTextInput.getText().toString().contentEquals("")) {
-
-
                     errorView.setText("Email cant be empty");
-
-
                 } else if (passwordTextInput.getText().toString().contentEquals("")) {
-
                     errorView.setText("Password cant be empty");
-
                 } else {
-
-
                     mAuth.signInWithEmailAndPassword(emailTextInput.getText().toString(), passwordTextInput.getText().toString())
                             .addOnCompleteListener(SignInActivity.this, new OnCompleteListener<AuthResult>() {
                                 @Override
@@ -69,28 +57,19 @@ public class SignInActivity extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         // Sign in success, update UI with the signed-in user's information
                                         Log.d(TAG, "signInWithEmail:success");
-
                                         FirebaseUser user = mAuth.getCurrentUser();
-
                                         if (user != null) {
                                             if (user.isEmailVerified()) {
-
-                                                
                                                 System.out.println("Email Verified : " + user.isEmailVerified());
                                                 Intent HomeActivity = new Intent(SignInActivity.this, MainActivity.class);
                                                 setResult(RESULT_OK, null);
                                                 startActivity(HomeActivity);
                                                 SignInActivity.this.finish();
-
-
                                             } else {
-
                                                 sendVerifyMailAgainButton.setVisibility(View.VISIBLE);
                                                 errorView.setText("Please Verify your EmailID and SignIn");
-
                                             }
                                         }
-
                                     } else {
                                         // If sign in fails, display a message to the user.
                                         Log.w(TAG, "signInWithEmail:failure", task.getException());
@@ -99,31 +78,21 @@ public class SignInActivity extends AppCompatActivity {
                                         if (task.getException() != null) {
                                             errorView.setText(task.getException().getMessage());
                                         }
-
                                     }
-
                                 }
                             });
-
-
                 }
-
-
             }
         });
-
 
         forgotPasswordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent forgotPasswordActivity = new Intent(SignInActivity.this, ForgotPasswordActivity.class);
                 startActivity(forgotPasswordActivity);
                 SignInActivity.this.finish();
 
             }
         });
-
-
     }
 }

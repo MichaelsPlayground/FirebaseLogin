@@ -13,4 +13,9 @@
     <string name="enterEmailId">Enter the registered Email ID</string>
     <string name="reset_password">Reset Password</string>
     <string name="user_domain_com">user@domain.com</string>
+    <string name="change_password">change password</string>
+    <string name="change_password_old">old password</string>
+    <string name="password_old">old password</string>
+    <string name="change_password_new">new password</string>
+    <string name="password_new">new password</string>
 </resources>
