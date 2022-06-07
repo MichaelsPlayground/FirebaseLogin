@@ -6,6 +6,8 @@ Source: https://github.com/Balaviknesh/Android-Java-Firebase-Login-Example
 
 This example Android application project has the complete and latest login system using Firebase. The Login system uses the firebase-auth library and Email & Password Authentication method. 
 
+Important: Firebase will send an email to user's email address for verification, so please do not enter sample email addresses.
+
 _*_Features:_*_
 * Sign Up 
 * Sign In
